@@ -45,7 +45,7 @@ class Directory extends React.Component{
           ];
           
         this.state = {
-            sections: sections
+            sections: sections,
         }
 
     }
