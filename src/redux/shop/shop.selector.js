@@ -10,10 +10,22 @@ export const selectShopCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
     [selectShopCollections],
-    collections => Object.keys(collections).map(key=>collections[key])
+    collections => collections ? Object.keys(collections).map(key=>collections[key]) : []
 );
 
-export const selectCollection = collectionUrlParam => createSelector(
+export const selectCollectionsForPage = createSelector(
     [selectShopCollections],
-    collections => collections[collectionUrlParam]
+    collections => collections ? collections.reduce((acc, item)=>{
+        acc[item.title.toLowerCase()] = item
+        return acc
+    }, {}):[]
 );
+
+export const selectCollection = collectionUrlParam => {
+    return createSelector(
+        [selectCollectionsForPage],
+        collections => {
+            return collections ? collections[collectionUrlParam] : null
+        }
+    )
+};
