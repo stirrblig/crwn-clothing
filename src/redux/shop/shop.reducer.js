@@ -26,7 +26,6 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 errorMessage: action.payload
             }
         default:
-            console.log('ACTION TYPE', action.type);
             return state;
     }
 }
