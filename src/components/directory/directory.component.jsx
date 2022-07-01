@@ -7,7 +7,6 @@ import MenuItem from '../menu-item/menu-item.component';
 
 const Directory = () => {
     const sections = useSelector(selectDirectorySections);
-    console.log('rjot')
     return (
         <div className='directory-menu'>
             {sections.map(({ id, ...otherSectionProps }) => (
